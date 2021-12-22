@@ -7,9 +7,9 @@
     background-blend-mode: color;
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: center;
 }
 
 .main-page {
     flex-grow: 1;
+    min-height: 0;
 }
