@@ -1,0 +1,18 @@
+.app-wrapper {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    background-color: aqua;
+}
+
+.main-page {
+    background-color: wheat;
+    flex-grow: 1;
+}
+
+.footer {
+    background-color: chartreuse;
+}
