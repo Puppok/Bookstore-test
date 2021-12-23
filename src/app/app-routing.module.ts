@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { BookDetailComponent } from './book-detail/book-detail.component';
 import { CartPageComponent } from './cart-page/cart-page.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { PageDevelopingComponent } from './page-developing/page-developing.component';
@@ -9,6 +10,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomePageComponent },
   { path: 'store', component: StorePageComponent },
+  { path: 'book_detail', component: BookDetailComponent },
   { path: 'cart', component: CartPageComponent },
   { path: 'order', component: PageDevelopingComponent }
 ];

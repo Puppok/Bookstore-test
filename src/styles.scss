@@ -1,4 +1,9 @@
 @import url("https://cdn.jsdelivr.net/gh/jgthms/minireset.css@master/minireset.min.css");
+@import url("https://fonts.googleapis.com/css?family=Material+Icons+Outlined");
+
+:root {
+    --main-margin: 7% 0 0 10%;
+}
 
 html, body {
     height: 100%;
