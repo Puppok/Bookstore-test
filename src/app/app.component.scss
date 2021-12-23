@@ -1,0 +1,15 @@
+.app-wrapper {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    background: url('../assets/images/background.jpg'), rgba(255, 255, 255, .6);
+    background-blend-mode: color;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.main-page {
+    flex-grow: 1;
+    min-height: 0;
+}

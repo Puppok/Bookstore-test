@@ -1,0 +1,66 @@
+.book-wrapper {
+    height: 450px;
+    background-color: rgba(184, 184, 184, 0.85);
+    border-radius: 20px;
+    transition: all .25s;
+}
+
+.book-wrapper:hover {
+    transform: scale(1.018);
+}
+
+.container {
+    width: 250px;
+    height: 400px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.book-image {
+    margin: auto;
+    width: 200px;
+    height: 300px;
+    background: url('https://itbook.store/img/books/1001635859865.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.title {
+    font-size: 24px;
+    padding-bottom: 5px;
+}
+
+.subtitle {
+    font-size: 18px;
+    padding-bottom: 5px;
+
+}
+
+.price {
+    font-size: 20px;
+    padding-bottom: 15px;
+
+}
+
+.buy-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    width: 75px;
+    height: 30px;
+    border: none;
+    border-radius: 6px;
+    background: grey;
+    box-shadow: 0 0 3px 0.1px #000;
+    font-size: 16px;
+}
+
+.buy-button:hover {
+    cursor: pointer;
+}
+
+.buy-button:active {
+    box-shadow: inset 0 0 3px 0.1px #000;
+}
