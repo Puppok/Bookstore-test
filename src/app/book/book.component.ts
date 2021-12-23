@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Books } from './../shared/books.interface';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-book',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BookComponent implements OnInit {
 
+  @Input() book!: Books
+
+  bookImage: string = ''
+
   constructor() { }
 
   ngOnInit(): void {
+    this.bookImage = this.book.image
   }
-
 }

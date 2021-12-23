@@ -1,20 +1,5 @@
 <div class="page-wrapper">
     <div class="container">
-        <app-book></app-book>
-        <app-book></app-book>
-        <app-book></app-book>
-        <app-book></app-book>
-        <app-book></app-book>
-        <app-book></app-book>
-        <app-book></app-book>
-        <app-book></app-book>
-        <app-book></app-book>
-        <app-book></app-book>
-        <app-book></app-book>
-        <app-book></app-book>
-        <app-book></app-book>
-        <app-book></app-book>
-        <app-book></app-book>
-        <app-book></app-book>   
+        <app-book *ngFor="let book of books" [book]="book"></app-book> 
     </div>
 </div>

@@ -1,9 +1,9 @@
 <div class="book-wrapper">
     <div routerLink="/book_detail" class="container">
-        <div class="book-image"></div>
-        <h1 class="title">Book</h1>
-        <h3 class="subtitle">Description</h3>
-        <p class="price">23$</p>
+        <img [src]="bookImage" alt="">
+        <h1 class="title">{{book.title}}</h1>
+        <h3 class="subtitle">{{book.subtitle}}</h3>
+        <p class="price">{{book.price}}</p>
     </div>
     <button class="buy-button">To cart</button>
 </div>
