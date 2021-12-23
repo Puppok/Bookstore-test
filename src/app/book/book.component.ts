@@ -11,10 +11,12 @@ export class BookComponent implements OnInit {
   @Input() book!: Books
 
   bookImage: string = ''
+  bookId: string = ''
 
   constructor() { }
 
   ngOnInit(): void {
     this.bookImage = this.book.image
+    this.bookId = this.book.isbn13
   }
 }
