@@ -1,3 +1,4 @@
+import { BooksService } from './../shared/books.service';
 import { CartService } from './../shared/cart.service';
 import { Component } from '@angular/core';
 @Component({
@@ -7,6 +8,10 @@ import { Component } from '@angular/core';
 })
 export class CartPageComponent {
 
-  constructor(readonly cartService: CartService) { }
+  constructor(readonly cartService: CartService, private bookService: BooksService) { }
 
+  clearCart() {
+    this.bookService.clearBook()
+    this.cartService.clearCart()
+  }
 }

@@ -44,4 +44,10 @@ export class BooksService {
     })
     this.books$$.next(outerBook)
   }
+
+  clearBook() {
+    this.books$$.next(this.books$$.getValue().map(innerBook => {
+      return {...innerBook, inCart: false}
+    }))
+  }
 }
