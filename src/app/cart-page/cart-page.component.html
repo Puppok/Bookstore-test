@@ -1,17 +1,12 @@
 <div class="page-wrapper">
     <div class="books-container">
-        <app-book></app-book>
-        <app-book></app-book>
-        <app-book></app-book>
-        <app-book></app-book>
-        <app-book></app-book>
-        <app-book></app-book>
-        <app-book></app-book>
+        <app-book *ngFor="let book of cartService.books$ | async" [book]="book" [inCart]="true"></app-book>
     </div>
     <div class="cart-container">
         <h1 class="title">Cart</h1>
-        <p class="order-info">Total items: 5</p>
-        <p class="order-info">Total amount: 120$</p>
+        <p class="order-info">Total items: {{ cartService.totalCount$ | async }}</p>
+        <p class="order-info">Total amount: {{ cartService.amount$ | async }}</p>
         <button routerLink="/order" class="order-button">Order now</button>
+        <button (click)="cartService.clearCart()" class="clear-cart">Clear cart</button>
     </div>
 </div>

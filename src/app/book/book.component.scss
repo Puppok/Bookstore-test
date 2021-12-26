@@ -34,13 +34,25 @@
 .subtitle {
     font-size: 18px;
     padding-bottom: 5px;
-
 }
 
 .price {
     font-size: 20px;
     padding-bottom: 15px;
+}
 
+.multiple-add {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.counter[type="number"]::-webkit-inner-spin-button {
+    display: none;
+}
+
+.counter[type="number"] {
+    text-align: center;
 }
 
 .buy-button {
@@ -55,6 +67,20 @@
     background: grey;
     box-shadow: 0 0 3px 0.1px #000;
     font-size: 16px;
+
+    &:disabled {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+        width: 75px;
+        height: 30px;
+        border: none;
+        border-radius: 6px;
+        background: chartreuse;
+        box-shadow: 0 0 3px 0.1px rgb(40, 255, 58);
+        font-size: 16px;
+    }
 }
 
 .buy-button:hover {
