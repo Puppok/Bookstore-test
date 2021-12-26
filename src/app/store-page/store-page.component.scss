@@ -1,4 +1,20 @@
 .container {
+    display: flex;
+    flex-direction: column;
+    // width: 80%;
+    // margin: 0 auto;
+    // display: flex;
+    // justify-content: center;
+    // flex-wrap: wrap;
+    // gap: 50px;
+}
+
+.sort-field {
+    width: 80%;
+    margin: 0 auto 20px;
+}
+
+.book-list {
     width: 80%;
     margin: 0 auto;
     display: flex;

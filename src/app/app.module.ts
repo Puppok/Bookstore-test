@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,6 +14,8 @@ import { CartPageComponent } from './cart-page/cart-page.component';
 import { BookComponent } from './book/book.component';
 import { BookDetailComponent } from './book-detail/book-detail.component';
 import { PageDevelopingComponent } from './page-developing/page-developing.component';
+import { SearchFieldComponent } from './search-field/search-field.component';
+import { SortComponent } from './sort/sort.component';
 
 @NgModule({
   declarations: [
@@ -23,12 +27,16 @@ import { PageDevelopingComponent } from './page-developing/page-developing.compo
     CartPageComponent,
     BookComponent,
     BookDetailComponent,
-    PageDevelopingComponent
+    PageDevelopingComponent,
+    SearchFieldComponent,
+    SortComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

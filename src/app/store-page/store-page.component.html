@@ -1,5 +1,8 @@
 <div class="page-wrapper">
     <div class="container">
-        <app-book *ngFor="let book of books$ | async" [book]="book" [inList]="true"></app-book> 
+        <app-sort class="sort-field"></app-sort>
+        <div class="book-list">
+            <app-book *ngFor="let book of books$ | async" [book]="book" [inList]="true"></app-book> 
+        </div>
     </div>
 </div>
