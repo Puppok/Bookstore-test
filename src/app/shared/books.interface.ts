@@ -5,6 +5,7 @@ export interface Book {
     price: string
     image: string
     inCart: boolean
+    itemCount: number
 }
 
 export interface Info {

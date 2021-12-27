@@ -5,10 +5,10 @@
         <h3 class="subtitle">{{book.subtitle}}</h3>
         <p class="price">{{book.price}}</p>
     </div>
-    <div *ngIf="inCart" class="multiple-add">
-        <button class="button-minus">-</button>
-        <input class="counter" type="number" placeholder="Amount:" min="1" max="50" value="1">
-        <button class="button-plus">+</button>
+    <div *ngIf="inCart" class="container">
+        <button [disabled]="book.itemCount < 2" (click)="removeBook()" class="button-minus">-</button>
+        <input class="counter" type="number" placeholder="Amount:" min="1" max="50" [value]="book.itemCount">
+        <button [disabled]="book.itemCount > 9" (click)="addBook()" class="button-plus">+</button>
     </div>
     <button *ngIf="inList" [disabled]="book.inCart" (click)="addToCart()" class="buy-button">{{book.inCart ? 'Added' : 'To cart'}}</button>
 </div>

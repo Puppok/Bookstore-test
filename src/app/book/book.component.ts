@@ -16,6 +16,7 @@ export class BookComponent implements OnInit {
 
   bookImage = ''
   bookId = ''
+  
 
   constructor(private cartService: CartService, private booksService: BooksService) { }
 
@@ -27,5 +28,17 @@ export class BookComponent implements OnInit {
   addToCart() {
     this.booksService.updateBook(this.bookId, {...this.book, inCart: true})
     this.cartService.addToCart(this.book)    
+  }
+
+  addBook() {
+    // this.booksService.updateBook(this.bookId, {...this.book, itemCount: this.book.itemCount++})
+    this.cartService.updateBookInCart(this.bookId, true)
+    
+  }
+
+  removeBook() {
+    // this.booksService.updateBook(this.bookId, {...this.book, itemCount: this.book.itemCount--})
+    this.cartService.updateBookInCart(this.bookId, false)
+    
   }
 }

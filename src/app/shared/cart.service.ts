@@ -15,15 +15,13 @@ export class CartService {
   readonly amount$ = this.storedBooks$.pipe(map(({totalAmount}) => totalAmount))
 
   addToCart(book: Book) { 
-    const books = [...this.storedBooks$$.getValue().books, {...book, inCart: true}]
+    const books = [...this.storedBooks$$.getValue().books, {...book, inCart: true, itemCount: 1}]
     
     this.storedBooks$$.next({
       books,
-      totalItems: books.length,
+      totalItems: books.reduce((total, book) => {return total + book.itemCount}, 0),
       totalAmount: this.calculateAmount(books)
     })
-
-    console.log('Book added: ', book)
   }
 
   clearCart() {
@@ -36,7 +34,20 @@ export class CartService {
 
   private calculateAmount(list: Book[]): number {
     return  Math.floor(list
-      .map(book => { return book.price.replace(/[$]/gi, '') })
-      .reduce((total, current) => { return total + +current }, 0)) || 0
+      .map(book => { return {amount: +book.price.replace(/[$]/gi, ''), count: book.itemCount} })
+      .reduce((total, current) => { return total + +current.amount*current.count }, 0)) || 0
+  }
+
+  updateBookInCart(id: string, increment: boolean) {   
+    const bookList = [...this.storedBooks$$.getValue().books]
+    const books = bookList.map(innerBook => {
+      if(innerBook.isbn13 === id) { return ({...innerBook, itemCount: increment ? innerBook.itemCount+1 : innerBook.itemCount-1})}
+      return innerBook
+    })
+    this.storedBooks$$.next({
+      books,
+      totalItems: books.reduce((total, book) => {return total + book.itemCount}, 0),
+      totalAmount: this.calculateAmount(books)
+    })
   }
 }

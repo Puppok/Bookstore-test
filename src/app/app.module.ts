@@ -29,7 +29,7 @@ import { SortComponent } from './sort/sort.component';
     BookDetailComponent,
     PageDevelopingComponent,
     SearchFieldComponent,
-    SortComponent
+    SortComponent,
   ],
   imports: [
     BrowserModule,
