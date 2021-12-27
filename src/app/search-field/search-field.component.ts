@@ -17,11 +17,12 @@ export class SearchFieldComponent implements OnInit, OnDestroy{
 
   ngOnInit(): void {
     this.searchTermStream.add(this.searchTerm.valueChanges
-    .pipe(debounceTime(1500))
+    .pipe(debounceTime(1000))
     .subscribe(value => this.searchService.updateTerm(value)))
   }
 
   ngOnDestroy(): void {
+      this.searchService.clearTerm()
       this.searchTermStream.unsubscribe()
   }
 

@@ -24,6 +24,17 @@ export class CartService {
     })
   }
 
+  removeFromCart(id: string) {
+    const books = [...this.storedBooks$$.getValue().books].filter(book => book.isbn13 !== id)
+    
+    this.storedBooks$$.next({
+      books, 
+      totalItems: books.reduce((total, book) => {return total + book.itemCount}, 0),
+      totalAmount: this.calculateAmount(books)
+    })
+    console.log('result', this.storedBooks$$.getValue().books);
+  }
+
   clearCart() {
     this.storedBooks$$.next({
       books: [],
