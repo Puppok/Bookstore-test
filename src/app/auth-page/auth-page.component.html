@@ -1,0 +1,10 @@
+<form class="wrapper" [formGroup]="auth" (ngSubmit)="onSubmit()">
+
+    <label for="">Enter username<input type="text" formControlName="login" required></label>
+    <div *ngIf="auth.errors?.['invalid_data'] && auth.touched">
+        Error auth
+    </div>
+    <label for="">Enter password<input type="text" formControlName="password" required></label>
+    <input type="submit" value="LogIn">
+    <a routerLink="/register">Register</a>
+</form>

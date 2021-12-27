@@ -16,6 +16,9 @@ import { BookDetailComponent } from './book-detail/book-detail.component';
 import { PageDevelopingComponent } from './page-developing/page-developing.component';
 import { SearchFieldComponent } from './search-field/search-field.component';
 import { SortComponent } from './sort/sort.component';
+import { RegisterPageComponent } from './register-page/register-page.component';
+import { AuthPageComponent } from './auth-page/auth-page.component';
+import { AuthGuard } from './shared/auth.guard';
 
 @NgModule({
   declarations: [
@@ -30,6 +33,8 @@ import { SortComponent } from './sort/sort.component';
     PageDevelopingComponent,
     SearchFieldComponent,
     SortComponent,
+    RegisterPageComponent,
+    AuthPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,7 +43,7 @@ import { SortComponent } from './sort/sort.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
