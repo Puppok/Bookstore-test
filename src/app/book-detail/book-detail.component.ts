@@ -1,8 +1,10 @@
+import { CartService } from './../shared/cart.service';
+import { Book } from './../shared/books.interface';
 import { BooksService } from './../shared/books.service';
-import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { filter, find, map } from 'rxjs';
-import { Books, Info } from '../shared/books.interface';
+import { APIService } from '../shared/API.service';
+import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { filter, map, merge, mergeMap } from 'rxjs';
 
 @Component({
   selector: 'app-book-detail',
@@ -11,47 +13,45 @@ import { Books, Info } from '../shared/books.interface';
 })
 export class BookDetailComponent implements OnInit {
 
-  currentId: string = ''
+  book?: Book
 
-  books: Books[] = []
-
-  book: Books = {
-    title: '',
-    subtitle: '',
-    isbn13: '',
-    price: '',
-    image: ''
-  }
-
-  info: Info = {
-    error: '',
-    total: '',
-    books: []
-  }
-
-  constructor(private route: ActivatedRoute, private booksService: BooksService) { }
+  constructor(private route: ActivatedRoute, private booksService: BooksService, private router: Router, private cartService: CartService) { }
 
   ngOnInit(): void {
-    this.route.params.subscribe(params => {
-      this.currentId = params['id']
-      console.log(this.currentId)
+    this.route.params.pipe(
+      mergeMap(params => this.booksService.books$.pipe(
+        map(books => books.find(book => book.isbn13 === params['id']))
+      ))
+    ).subscribe(book => {
+      if(book) {
+        this.book = book
+      } else {
+        this.router.navigateByUrl('/store')
+      }
     })
+    // this.booksService.loadInfo().subscribe(info => {
+    //   this.info = info
+    //   console.log(info)
+    // })
 
-    this.booksService.loadInfo().subscribe(info => {
-      this.info = info
-      console.log(info)
-    })
+    // this.booksService.loadInfo()
+    //   .pipe(
+    //     map(() => this.info.books.find(book => book.isbn13 == this.currentId)),
+    //     filter(Boolean)
+    //   )
+    //   .subscribe(book => {
+    //     this.book.title = book.title
+    //     this.book.price = book.price
+    //     this.book.subtitle = book.subtitle
+    //     this.book.image = book.image
+    //     console.log(this.book)
+    //   })
+  }
 
-    this.booksService.loadInfo()
-      .pipe(
-        map(() => this.info.books.find(book => book.isbn13 == this.currentId))
-      )
-      .subscribe(book => {
-        this.book.title = book!.title
-        this.book.price = book!.price
-        this.book.subtitle = book!.subtitle
-        this.book.image = book!.image
-        console.log(this.book)
-      })
+  addToCart() {
+    if(this.book) {
+      this.booksService.updateBook(this.book.isbn13, {...this.book, inCart: true})
+      this.cartService.addToCart(this.book)
+    }
   }
 }
