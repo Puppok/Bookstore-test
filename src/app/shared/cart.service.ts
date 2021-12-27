@@ -14,25 +14,28 @@ export class CartService {
   readonly totalCount$ = this.storedBooks$.pipe(map(({totalItems}) => totalItems))
   readonly amount$ = this.storedBooks$.pipe(map(({totalAmount}) => totalAmount))
 
+  constructor() {
+    this.loadState()
+  }
+
   addToCart(book: Book) { 
     const books = [...this.storedBooks$$.getValue().books, {...book, inCart: true, itemCount: 1}]
-    
     this.storedBooks$$.next({
       books,
       totalItems: books.reduce((total, book) => {return total + book.itemCount}, 0),
       totalAmount: this.calculateAmount(books)
     })
+    this.saveState(books)
   }
 
   removeFromCart(id: string) {
     const books = [...this.storedBooks$$.getValue().books].filter(book => book.isbn13 !== id)
-    
     this.storedBooks$$.next({
       books, 
       totalItems: books.reduce((total, book) => {return total + book.itemCount}, 0),
       totalAmount: this.calculateAmount(books)
     })
-    console.log('result', this.storedBooks$$.getValue().books);
+    this.saveState(books)
   }
 
   clearCart() {
@@ -41,6 +44,7 @@ export class CartService {
       totalAmount: 0,
       totalItems: 0
     })
+    localStorage.clear()
   }
 
   private calculateAmount(list: Book[]): number {
@@ -60,5 +64,40 @@ export class CartService {
       totalItems: books.reduce((total, book) => {return total + book.itemCount}, 0),
       totalAmount: this.calculateAmount(books)
     })
+    this.saveState(books)
   }
+
+  saveState(books: Book[]) {
+    localStorage.setItem('Cart-books', JSON.stringify(books))
+  }
+
+  loadState() {
+    const booksInStorage: Book[] = JSON.parse(localStorage.getItem('Cart-books') ?? '[]')
+    this.storedBooks$$.next({
+      books: booksInStorage,
+      totalItems: booksInStorage.reduce((total, book) => {return total + book.itemCount}, 0),
+      totalAmount: this.calculateAmount(booksInStorage)
+    })
+  }
+
+
+
+  // updateList(books: Book[]) {
+  //   console.log(books);
+    
+  //   const loadedBooks = books.filter(book => book.inCart)
+  //   console.log(loadedBooks);
+    
+  //   this.storedBooks$$.next({
+  //     books: loadedBooks,
+  //     totalItems: loadedBooks.reduce((total, book) => {return total + book.itemCount}, 0),
+  //     totalAmount: this.calculateAmount(loadedBooks)
+  //   })
+  //   console.log(this.storedBooks$$.getValue());
+    
+  // }
+
+  // getValue(): Book[] {
+  //   return this.storedBooks$$.getValue().books;
+  // }
 }
