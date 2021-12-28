@@ -1,19 +1,38 @@
+@mixin for-desktop-up {
+    @media (max-width: 1280px) { @content; }
+}
+
+
 .footer-wrapper {
+    max-width: 100%;
     background-color: rgba(148, 148, 148, 0.45);
     text-align: center;
     padding: 3px 0;
 }
 
 .title {
-    font-size: 15px;
+    font-size: 1.1em;
+
+    @include for-desktop-up {
+        font-size: .9em;
+        margin-bottom: 2px;
+    }
 }
 
 .subtitle {
-    font-size: 14px;
+    font-size: 1em;
+
+    @include for-desktop-up {
+        font-size: .8em;
+    }
 }
 
 .github-link {
-    font-size: 15px;
+    font-size: 1em;
     text-decoration: none;
     color: #000;
+
+    @include for-desktop-up {
+        font-size: .8em;
+    }
 }
