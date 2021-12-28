@@ -1,6 +1,9 @@
-<form class="register-page-wrapper" [formGroup]="register" (ngSubmit)="onSubmit()">
-    <input type="text" placeholder="Username:" formControlName="login">
-    <input type="text" placeholder="Password:" formControlName="password">
-    <input type="submit" value="Register" class="submit-button">
-    <a routerLink="/auth" class="login-link">To logIn</a>
-</form>
+<div class="register-page-wrapper">
+    <h1 class="register">Register</h1>
+    <form class="register-form" [formGroup]="register" (ngSubmit)="onSubmit()">
+        <input type="text" placeholder="Username:" formControlName="login">
+        <input type="text" placeholder="Password:" formControlName="password">
+        <input type="submit" value="Register" class="submit-button">
+        <a routerLink="/auth" class="login-link">To logIn</a>
+    </form>
+</div>
