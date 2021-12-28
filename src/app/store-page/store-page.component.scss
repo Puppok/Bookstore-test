@@ -1,17 +1,21 @@
+@mixin for-desktop-up {
+    @media (max-width: 1280px) { @content; }
+}
+
+
 .container {
     display: flex;
     flex-direction: column;
-    // width: 80%;
-    // margin: 0 auto;
-    // display: flex;
-    // justify-content: center;
-    // flex-wrap: wrap;
-    // gap: 50px;
 }
 
 .sort-field {
     width: 80%;
-    margin: 0 auto 20px;
+    height: 100%;
+    margin: 0 auto 2vh;
+
+    @include for-desktop-up {
+        margin: 0 auto 2vh;
+    }
 }
 
 .book-list {
@@ -20,5 +24,9 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 50px;
+    gap: 4em;
+
+    @include for-desktop-up {
+        gap: 3em;
+    }
 }
