@@ -1,13 +1,13 @@
 <div class="book-detail-wrapper">
     <div class="book-info">
-        <h1 class="title">Book name</h1>
-        <h3 class="description">Book description</h3>
-        <p class="price">100$</p>
-        <button class="buy-button">Add to cart</button>
+        <h1 class="title">{{book?.title}}</h1>
+        <h3 class="description">{{book?.subtitle}}</h3>
+        <p class="price">{{book?.price}}</p>
+        <button [disabled]="book?.inCart" (click)="addToCart()" class="buy-button">{{book?.inCart ? 'Added' : 'To cart'}}</button>
         <div class="return">
             <span class="material-icons-outlined">chevron_left</span>
             <button routerLink="/store" class="return-button">Back to store</button>
         </div>
     </div>
-    <div class="book-image"></div>
+    <img [src]="book?.image" alt="">
 </div>

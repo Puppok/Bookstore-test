@@ -1,5 +1,6 @@
 <div class="header-wrapper">
     <h1 class="title">Bookstore</h1>
+    <app-search-field *ngIf="router.url == '/store'"></app-search-field>
     <nav class="navigation">
         <a routerLink="/home" class="link">Home</a>
         <a routerLink="/store" class="link">Store</a>

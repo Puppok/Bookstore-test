@@ -1,9 +1,15 @@
 <div class="book-wrapper">
-    <div routerLink="/book_detail" class="container">
-        <div class="book-image"></div>
-        <h1 class="title">Book</h1>
-        <h3 class="subtitle">Description</h3>
-        <p class="price">23$</p>
+    <button *ngIf="inCart" (click)="removeFromCart()" class="remove">Remove</button>
+    <div [routerLink]="['/store', bookId]" class="container">
+        <img [src]="bookImage" alt="">
+        <h1 class="title">{{book.title}}</h1>
+        <h3 class="subtitle">{{book.subtitle}}</h3>
+        <p class="price">{{book.price}}</p>
     </div>
-    <button class="buy-button">To cart</button>
+    <div *ngIf="inCart" class="container">
+        <button [disabled]="book.itemCount < 2" (click)="lessBook()" class="button-minus">-</button>
+        <input class="counter" type="number" placeholder="Amount:" min="1" max="50" [value]="book.itemCount">
+        <button [disabled]="book.itemCount > 9" (click)="moreBook()" class="button-plus">+</button>
+    </div>
+    <button *ngIf="inList" [disabled]="book.inCart" (click)="addToCart()" class="buy-button">{{book.inCart ? 'Added' : 'To cart'}}</button>
 </div>
