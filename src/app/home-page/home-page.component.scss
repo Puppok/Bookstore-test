@@ -1,3 +1,8 @@
+@mixin for-desktop-up {
+    @media (max-width: 1280px) { @content; }
+}
+
+
 .home-page-wrapper {
     display: flex;
     height: 100%;
@@ -8,32 +13,59 @@
     margin: var(--main-margin);
 
     .title {
-        margin-bottom: 30px;
-        font-size: 50px;
+        margin-bottom: 5vh;
+        font-size: 4.5em;
     }
 
     .description {
-        font-size: 35px;
-        margin-bottom: 20px;
+        font-size: 2.7em;
+        margin-bottom: 2vh;
     }
 
     .push-to-act {
-        font-size: 35px;
+        font-size: 2.2em;
     }
 
     .list-button {
-        margin: 40px 0 0 15%;
-        width: 200px;
-        height: 40px;
+        margin: 5% 0 0 15%;
+        width: 12vw;
+        height: 4vh;
         border-radius: 50px;
         border: none;
         background: grey;
-        font-size: 18px;
+        font-size: 1.5em;
         box-shadow: 0 0 7px 2px #000;
     }
 
     .list-button:active {
         box-shadow: inset 0 0 7px 3px rgb(70, 70, 70);
+    }
+
+    @include for-desktop-up {
+        .title {
+            margin-bottom: 5vh;
+            font-size: 3em;
+        }
+    
+        .description {
+            font-size: 2em;
+            margin-bottom: 2vh;
+        }
+    
+        .push-to-act {
+            font-size: 1.8em;
+        }
+
+        .list-button {
+            margin: 5% 0 0 15%;
+            width: 11vw;
+            height: 3.8vh;
+            border-radius: 50px;
+            border: none;
+            background: grey;
+            font-size: 1.2em;
+            box-shadow: 0 0 7px 2px #000;
+        }    
     }
 }
 
@@ -41,13 +73,12 @@
     width: 100%;
 
     .books {
-        margin: 80px 30px 0 0;
-        width: 520px;
-        height: 440px;
-        background: url('../../assets/images/home-page/books.png');
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        transform: rotate(90deg)
+        margin: 20% 0 0;
+        transform: rotate(90deg) scale(1.3);
+
+        @include for-desktop-up {
+            margin: 10% 0 0;
+            transform: rotate(90deg) scale(.9);
+        }
     }
 }
