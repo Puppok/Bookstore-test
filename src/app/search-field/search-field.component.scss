@@ -1,0 +1,14 @@
+@mixin for-desktop-up {
+    @media (max-width: 1280px) { @content; }
+}
+
+.search-field {
+    max-width: 100%;
+    width: 30vw;
+    height: 100%;
+    border-radius: 10px;
+
+    @include for-desktop-up {
+        width: 20vw;
+    }
+}

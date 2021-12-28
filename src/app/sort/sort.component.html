@@ -1,8 +1,10 @@
-<label>Sort by: </label>
-<select [formControl]="option">
-    <option [value]="sortOptions.NONE">None</option>
-    <option [value]="sortOptions.NAME_UP">Name up</option>
-    <option [value]="sortOptions.NAME_DOWN">Name down</option>
-    <option [value]="sortOptions.PRICE_UP">Price up</option>
-    <option [value]="sortOptions.PRICE_DOWN">Price down</option>
-</select>
+<div class="sort-wrapper">
+    <label>Sort by: </label>
+    <select [formControl]="option">
+        <option [value]="sortOptions.NONE">None</option>
+        <option [value]="sortOptions.NAME_UP">Name up</option>
+        <option [value]="sortOptions.NAME_DOWN">Name down</option>
+        <option [value]="sortOptions.PRICE_UP">Price up</option>
+        <option [value]="sortOptions.PRICE_DOWN">Price down</option>
+    </select>
+</div>

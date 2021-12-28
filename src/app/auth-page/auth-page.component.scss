@@ -1,0 +1,46 @@
+.auth-page-wrapper {
+    max-width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .sign-in {
+        font-size: 2em;
+        margin-bottom: 1vh;
+    }
+
+    .login-form {
+        max-width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+    }
+
+    input {
+        width: 15vw;
+        height: 3vh;
+        border-radius: 5px;
+    }
+    
+    input:nth-child(1) {
+        margin-bottom: .7vh;
+    }
+
+    .submit-button {
+        margin-top: 1vh;
+        width: 5vw;
+        height: 2.7vh;
+        margin-bottom: .7vh;
+    }
+
+    .register-link {
+        text-decoration: underline;
+        color: #000;
+        cursor: pointer;
+        font-size: 1.1em;
+    }
+}

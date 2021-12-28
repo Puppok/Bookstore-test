@@ -1,7 +1,10 @@
-<form class="wrapper" [formGroup]="register" (ngSubmit)="onSubmit()">
-
-    <label for="">Enter username<input type="text" formControlName="login"></label>
-    <label for="">Enter password<input type="text" formControlName="password"></label>
-    <input type="submit" value="Register">
-
-</form>
+<div class="register-page-wrapper">
+    <h1 class="register">Register</h1>
+    <form class="register-form" [formGroup]="register" (ngSubmit)="onSubmit()">
+        <input type="text" placeholder="Username:" formControlName="login">
+        <input type="text" placeholder="Password:" formControlName="password">
+        <div *ngIf="isInvalid" class="invalid-data">Invalid data</div>
+        <input type="submit" value="Register" class="submit-button">
+        <a routerLink="/auth" class="login-link">To logIn</a>
+    </form>
+</div>

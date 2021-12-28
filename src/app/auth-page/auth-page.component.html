@@ -1,10 +1,11 @@
-<form class="wrapper" [formGroup]="auth" (ngSubmit)="onSubmit()">
-
-    <label for="">Enter username<input type="text" formControlName="login" required></label>
-    <div *ngIf="auth.errors?.['invalid_data'] && auth.touched">
-        Error auth
-    </div>
-    <label for="">Enter password<input type="text" formControlName="password" required></label>
-    <input type="submit" value="LogIn">
-    <a routerLink="/register">Register</a>
-</form>
+<div class="auth-page-wrapper">
+    <h1 class="sign-in">Sing In</h1>
+    <form class="login-form" [formGroup]="auth" (ngSubmit)="onSubmit()">
+        <input type="text" placeholder="Enter login:" formControlName="login" required>
+        <input type="text" placeholder="Enter password:" formControlName="password" required>
+        <div *ngIf="auth.errors?.['invalid_data']">Invalid data</div>
+        <div *ngIf="validData">Successfully logged in</div>
+        <input type="submit" value="LogIn" class="submit-button">
+        <a routerLink="/register" class="register-link">Register</a>
+    </form>
+</div>
