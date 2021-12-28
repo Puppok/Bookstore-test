@@ -1,12 +1,12 @@
 <div class="book-wrapper">
-    <button *ngIf="inCart" (click)="removeFromCart()" class="remove">Remove</button>
-    <div [routerLink]="['/store', bookId]" class="container">
-        <img [src]="bookImage" alt="">
+    <button *ngIf="inCart" (click)="removeFromCart()" class="remove-button">Remove</button>
+    <div [routerLink]="['/store', bookId]" class="info-container">
+        <img [src]="bookImage" alt="book image">
         <h1 class="title">{{book.title}}</h1>
         <h3 class="subtitle">{{book.subtitle}}</h3>
         <p class="price">{{book.price}}</p>
     </div>
-    <div *ngIf="inCart" class="container">
+    <div *ngIf="inCart" class="counter-container">
         <button [disabled]="book.itemCount < 2" (click)="lessBook()" class="button-minus">-</button>
         <input class="counter" type="number" placeholder="Amount:" min="1" max="50" [value]="book.itemCount">
         <button [disabled]="book.itemCount > 9" (click)="moreBook()" class="button-plus">+</button>

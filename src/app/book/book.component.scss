@@ -1,50 +1,74 @@
+@mixin for-desktop-up {
+    @media (max-width: 1280px) { @content; }
+}
+
+
 .book-wrapper {
-    height: 450px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     background-color: rgba(184, 184, 184, 0.85);
     border-radius: 20px;
     transition: all .25s;
+    position: relative;
 }
 
 .book-wrapper:hover {
     transform: scale(1.018);
 }
 
-.container {
-    width: 250px;
-    height: 400px;
+.remove-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 5px;
+    background-color: rgba(218, 218, 218, 0.85);
+    text-align: center;
+}
+
+.info-container {
+    width: 15vw;
+    height: 100%;
     text-align: center;
     cursor: pointer;
 }
 
-.book-image {
-    margin: auto;
-    width: 200px;
-    height: 300px;
-    background: url('https://itbook.store/img/books/1001635859865.png');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
 .title {
-    font-size: 24px;
-    padding-bottom: 5px;
+    height: 2.5vh;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 1.5em;
+    padding: 0 1vw;
+    margin-bottom: .5vh;
+
+    @include for-desktop-up {
+        font-size: 1.2em;
+    }
 }
 
 .subtitle {
-    font-size: 18px;
-    padding-bottom: 5px;
+    font-size: 1.1em;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding: 0 2vh;
+    margin-bottom: .5vh;
+
+    @include for-desktop-up {
+        font-size: .9em;
+    }
 }
 
 .price {
-    font-size: 20px;
-    padding-bottom: 15px;
+    font-size: 1.3em;
 }
 
-.multiple-add {
+.counter-container {
     display: flex;
     justify-content: center;
-    margin-bottom: 10px;
+    margin: 1vh 0;
 }
 
 .counter[type="number"]::-webkit-inner-spin-button {
@@ -55,32 +79,39 @@
     text-align: center;
 }
 
-
 .buy-button {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0 auto;
-    width: 75px;
-    height: 30px;
+    margin: 1vh auto;
+    width: 5vw;
+    height: 3vh;
     border: none;
     border-radius: 6px;
     background: grey;
     box-shadow: 0 0 3px 0.1px #000;
-    font-size: 16px;
+    font-size: 1.2em;
 
     &:disabled {
         display: flex;
         justify-content: center;
         align-items: center;
-        margin: 0 auto;
-        width: 75px;
-        height: 30px;
+        margin: 1vh auto;
+        width: 5vw;
+        height: 3vh;
         border: none;
         border-radius: 6px;
         background: chartreuse;
         box-shadow: 0 0 3px 0.1px rgb(40, 255, 58);
-        font-size: 16px;
+        font-size: 1.2em;
+    }
+
+    @include for-desktop-up {
+        font-size: 0.9em;
+
+        &:disabled {
+            font-size: 0.9em;
+        }
     }
 }
 
