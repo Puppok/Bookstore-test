@@ -18,7 +18,6 @@ export class RegisterPageComponent implements OnInit {
       login: new FormControl(''),
       password: new FormControl('')
     })
-    localStorage.setItem('Users', JSON.stringify([{login: 'admin', password: 'admin'}]))
   }
 
   onSubmit() {

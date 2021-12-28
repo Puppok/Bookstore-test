@@ -17,6 +17,7 @@ export class AuthPageComponent implements OnInit {
       login: new FormControl('', [Validators.required]),
       password: new FormControl('', [Validators.required])
     })
+    localStorage.setItem('Users', JSON.stringify([{login: 'admin', password: 'admin'}]))
   }
 
   private generateToken(): void {
