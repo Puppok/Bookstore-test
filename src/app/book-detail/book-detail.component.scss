@@ -2,11 +2,12 @@
     height: 100%;
     display: flex;
     justify-content: center;
-    gap: 20%;
+    gap: 5%;
 }
 
 .book-info {
     margin-top: 7%;
+    width: 40vw;
 }
 
 .title {
@@ -35,6 +36,19 @@
     background: grey;
     box-shadow: 0 0 3px 0.1px #000;
     font-size: 16px;
+
+    &:disabled {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100px;
+        height: 30px;
+        border: none;
+        border-radius: 6px;
+        background: chartreuse;
+        box-shadow: 0 0 3px 0.1px rgb(40, 255, 58);
+        font-size: 16px;
+    }
 }
 
 .buy-button:hover {
