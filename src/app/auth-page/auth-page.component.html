@@ -3,7 +3,7 @@
     <form class="login-form" [formGroup]="auth" (ngSubmit)="onSubmit()">
         <input type="text" placeholder="Enter login:" formControlName="login" required>
         <input type="text" placeholder="Enter password:" formControlName="password" required>
-        <div *ngIf="auth.errors?.['invalid_data'] && auth.touched">Invalid data</div>
+        <div *ngIf="auth.errors?.['invalid_data']">Invalid data</div>
         <div *ngIf="validData">Successfully logged in</div>
         <input type="submit" value="LogIn" class="submit-button">
         <a routerLink="/register" class="register-link">Register</a>

@@ -3,6 +3,7 @@
     <form class="register-form" [formGroup]="register" (ngSubmit)="onSubmit()">
         <input type="text" placeholder="Username:" formControlName="login">
         <input type="text" placeholder="Password:" formControlName="password">
+        <div *ngIf="isInvalid" class="invalid-data">Invalid data</div>
         <input type="submit" value="Register" class="submit-button">
         <a routerLink="/auth" class="login-link">To logIn</a>
     </form>

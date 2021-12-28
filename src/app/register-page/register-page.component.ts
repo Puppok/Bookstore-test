@@ -13,6 +13,7 @@ export class RegisterPageComponent implements OnInit {
 
   register: FormGroup = new FormGroup({})
   users: User[] = []
+  isInvalid: boolean = false
 
   constructor(private router: Router) {}
 
@@ -26,12 +27,17 @@ export class RegisterPageComponent implements OnInit {
 
   onSubmit() {
     const test = this.loadData()
-    const user: User = {
-      login: this.register.value.login,
-      password: this.register.value.password
+    if(this.register.value.login || this.register.value.password != '') {
+      const user: User = {
+        login: this.register.value.login,
+        password: this.register.value.password
+      }
+      this.saveData([...test, user])
+      this.router.navigateByUrl('/auth')
+    } else {
+      this.isInvalid = true
+      setTimeout(() => {this.isInvalid = false}, 1000)      
     }
-    this.saveData([...test, user])
-    this.router.navigateByUrl('/auth')
   }
 
   saveData(users: User[]) {

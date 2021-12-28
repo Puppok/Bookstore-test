@@ -34,7 +34,7 @@ export class AuthPageComponent implements OnInit {
       return user.login === this.auth.value.login && user.password === this.auth.value.password
     })
     
-    if(findUser){
+    if(findUser && this.auth.value.login && this.auth.value.password != ""){
       this.generateToken();
       this.validData = true
       setTimeout(() => {this.router.navigateByUrl('/home')}, 1500)
