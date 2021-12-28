@@ -18,6 +18,7 @@ export class RegisterPageComponent implements OnInit {
       login: new FormControl(''),
       password: new FormControl('')
     })
+    localStorage.setItem('Users', JSON.stringify([{login: 'admin', password: 'admin'}]))
   }
 
   onSubmit() {
@@ -34,7 +35,7 @@ export class RegisterPageComponent implements OnInit {
   }
 
   loadData() {
-    const loaded: User[] = JSON.parse(localStorage.getItem('Users') ?? '[]')
+    const loaded: User[] = JSON.parse(localStorage.getItem('Users') ?? '[{}]')
     return loaded
   }
 }

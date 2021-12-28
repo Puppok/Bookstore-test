@@ -44,7 +44,8 @@ export class CartService {
       totalAmount: 0,
       totalItems: 0
     })
-    localStorage.clear()
+    localStorage.removeItem('Book-list')
+    localStorage.removeItem('Cart-books')
   }
 
   private calculateAmount(list: Book[]): number {
