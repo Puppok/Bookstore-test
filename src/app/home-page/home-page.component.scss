@@ -27,7 +27,7 @@
     }
 
     .list-button {
-        margin: 5% 0 0 15%;
+        margin: 5% 0 0 12%;
         width: 12vw;
         height: 4vh;
         border-radius: 50px;
@@ -66,19 +66,5 @@
             font-size: 1.2em;
             box-shadow: 0 0 7px 2px #000;
         }    
-    }
-}
-
-.decor-container {
-    width: 100%;
-
-    .books {
-        margin: 20% 0 0;
-        transform: rotate(90deg) scale(1.3);
-
-        @include for-desktop-up {
-            margin: 10% 0 0;
-            transform: rotate(90deg) scale(.9);
-        }
     }
 }
