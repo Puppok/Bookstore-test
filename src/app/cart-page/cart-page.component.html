@@ -7,6 +7,6 @@
         <p class="order-info">Total items: {{ cartService.totalCount$ | async }}</p>
         <p class="order-info">Total amount: ${{ cartService.amount$ | async }}</p>
         <button routerLink="/order" class="order-button">Order now</button>
-        <button (click)="clearCart()" class="clear-cart">Clear cart</button>
+        <button (click)="clearCart()" class="clear-button">Clear cart</button>
     </div>
 </div>
